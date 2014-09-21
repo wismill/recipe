@@ -1,0 +1,136 @@
+#!/bin/bash
+######################Archphile Creation Script for Udoo V1.6############################
+clear
+red='\e[0;31m'
+NC='\e[0m'
+# Changing Root password
+echo -e "${red}Change the root password...${NC}" 
+passwd
+
+# Changing hostname
+echo -e "${red}Changing your hostname...${NC}" 
+hostnamectl set-hostname archphile
+
+# /etc/motd text
+echo -e "${red}Downloading sample /etc/motd file...${NC}" 
+wget http://archphile.org/lab/files/motd-udoo
+mv motd-udoo /etc/motd
+nano /etc/motd
+
+# Changing DNS servers
+echo -e "${red}Changing to Google DNS servers...${NC}" 
+systemctl disable systemd-resolved
+rm /etc/resolv.conf
+cat > /etc/resolv.conf <<"EOF"
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF
+echo -e "${red}Disallowing dhcpcd to change DNS servers...${NC}" 
+echo "nohook resolv.conf" >>/etc/dhcpcd.conf
+
+# Disabling ipv6
+cat > /etc/modprobe.d/blacklist.conf <<"EOF"
+blacklist ipv6
+EOF
+
+# Network Configuration
+echo -e "${red}Changing netctl network configuration...${NC}" 
+wget http://archphile.org/lab/files/archphile-network
+mv archphile-network /etc/netctl/archphile-network
+systemctl disable systemd-networkd
+netctl enable archphile-network
+
+# Locale and timezone configuration
+systemctl disable systemd-timesyncd
+pacman -Sy ntp --noconfirm
+echo -e "${red}Changing locale, timezone and ntp configuration...${NC}" 
+sed -i 's/^#en_US.UTF-8 UTF-8.*/en_US.UTF-8 UTF-8/' /etc/locale.gen
+locale-gen
+echo "LANG="en_US.UTF-8"" > /etc/locale.conf
+rm /etc/localtime
+ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime
+wget http://archphile.org/lab/files/ntp.conf
+mv ntp.conf /etc/ntp.conf
+
+# /etc/fstab tweaking and linking .bash_history to /dev/null
+echo -e "${red}Changing fstab entries...${NC}" 
+wget http://archphile.org/lab/files/fstab-udoo
+mv fstab-udoo /etc/fstab 
+echo -e "${red}Linking .bash_history to /dev/null...${NC}" 
+rm /root/.bash_history
+ln -sf /dev/null ~/.bash_history
+
+# Adding Archphile repository and installing needed packages
+echo -e "${red}Adding Archphile Repository...${NC}" 
+cat >> /etc/pacman.conf <<"EOF"
+[archphile]
+SigLevel = Never
+Server = http://archphile.org/repo/udoo-quad
+EOF
+echo -e "${red}Updating system and installing needed packages...${NC}" 
+pacman -Syu --noconfirm
+pacman -S linux-armv7
+pacman -S mpd-archphile mpc ympd-archphile archphile-optimize alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant --noconfirm
+
+# Removing unneeded packages and cleaning pacman cache
+echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}" 
+pacman -Rcsn lvm2 mdadm reiserfsprogs xfsprogs man-db --noconfirm
+systemctl disable cronie
+pacman -Scc
+
+# Enabling systemd services
+echo -e "${red}Enabling needed Systemd services...${NC}" 
+systemctl enable mpd
+systemctl enable ympd
+systemctl enable archphile
+systemctl enable avahi-daemon
+
+# Creating stuff for MPD
+echo -e "${red}Creating directories needed by MPD and downloading webradios...${NC}" 
+mkdir /mnt/nas-nfs
+chmod 777 /mnt/nas-nfs
+mkdir /mnt/nas-samba
+chmod 777 /mnt/nas-samba
+wget http://archphile.org/lab/webradio.tar.gz
+tar xvfz webradio.tar.gz
+mv webradio /mnt/
+rm webradio.tar.gz
+chmod 777 /mnt/webradio
+mkdir /mnt/usb-disk
+chmod 777 /mnt/usb-disk
+mkdir /var/lib/mpd/music
+chown -R mpd /var/lib/mpd
+cd /var/lib/mpd/music
+ln -s /mnt/nas-nfs
+ln -s /mnt/nas-samba
+ln -s /mnt/webradio
+ln -s /mnt/usb-disk
+gpasswd -a mpd audio
+
+# udevil configuration
+echo -e "${red}Creating udevil configuration and enabling devmon service...${NC}" 
+wget http://archphile.org/lab/files/udevil.conf
+mv udevil.conf /etc/udevil/udevil.conf
+systemctl enable devmon@root
+
+# limits.conf configuration
+echo -e "${red}Changing /etc/security/limits.conf configuration...${NC}" 
+wget http://archphile.org/lab/files/limits.conf
+mv limits.conf /etc/security/limits.conf
+
+# journald.conf configuration and /var/log deletion
+echo -e "${red}Changing journald.conf configuration and deleting /var/log...${NC}" 
+sed -i 's/^#Storage=auto.*/Storage=none/' /etc/systemd/journald.conf
+rm -R /var/log
+
+echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
+
+# Script deletion
+rm /root/archphile-create-script*
+
+
+
+
+
+
+
