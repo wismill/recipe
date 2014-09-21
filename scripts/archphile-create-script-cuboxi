@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Cubox-i V1.2############################
+######################Archphile Creation Script for Cubox-i V1.3############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -144,7 +144,7 @@ rm -R /var/log
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
 # Script deletion
-rm /root/archphile-create-script*
+rm archphile-create-script*
 
 
 
