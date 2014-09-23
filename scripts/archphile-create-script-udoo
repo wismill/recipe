@@ -126,7 +126,7 @@ rm -R /var/log
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
 # Script deletion
-rm archphile-create-script*
+rm /root/archphile-create-script*
 
 
 
