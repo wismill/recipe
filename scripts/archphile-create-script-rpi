@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V1.8############################
+######################Archphile Creation Script for Raspberry Pi V1.9############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -119,10 +119,10 @@ wget http://archphile.org/lab/files/udevil.conf
 mv udevil.conf /etc/udevil/udevil.conf
 systemctl enable devmon@root
 
-# limits.conf configuration
-echo -e "${red}Changing /etc/security/limits.conf configuration...${NC}" 
-wget http://archphile.org/lab/files/limits.conf
-mv limits.conf /etc/security/limits.conf
+## limits.conf configuration
+#echo -e "${red}Changing /etc/security/limits.conf configuration...${NC}" 
+#wget http://archphile.org/lab/files/limits.conf
+#mv limits.conf /etc/security/limits.conf
 
 # journald.conf configuration and /var/log deletion
 echo -e "${red}Changing journald.conf configuration and deleting /var/log...${NC}" 
