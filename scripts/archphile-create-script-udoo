@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Udoo V1.8############################
+######################Archphile Creation Script for Udoo V1.9############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -77,6 +77,12 @@ echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}"
 pacman -Rcsn lvm2 mdadm reiserfsprogs xfsprogs man-db --noconfirm
 systemctl disable cronie
 pacman -Scc
+
+# Bypassing new User=mpd systemd configuration 
+echo -e "${red}Fetching user.conf in order to bypass User=mpd...${NC}" 
+mkdir /etc/systemd/system/mpd.service.d
+wget http://archphile.org/lab/files/user.conf
+mv user.conf /etc/systemd/system/mpd.service.d/
 
 # Enabling systemd services
 echo -e "${red}Enabling needed Systemd services...${NC}" 
