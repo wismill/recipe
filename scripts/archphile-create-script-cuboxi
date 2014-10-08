@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Cubox-i V1.5############################
+######################Archphile Creation Script for Cubox-i V1.6############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -28,9 +28,10 @@ EOF
 echo -e "${red}Disallowing dhcpcd to change DNS servers...${NC}" 
 echo "nohook resolv.conf" >>/etc/dhcpcd.conf
 
-# Disabling ipv6
+# Disabling ipv6 and ir
 cat > /etc/modprobe.d/blacklist.conf <<"EOF"
 blacklist ipv6
+blacklist gpio_ir_recv
 EOF
 
 # Network Configuration
