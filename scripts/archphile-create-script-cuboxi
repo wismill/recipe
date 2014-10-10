@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Cubox-i V1.6############################
+######################Archphile Creation Script for Cubox-i V1.7############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -99,16 +99,12 @@ systemctl enable avahi-daemon
 # Creating stuff for MPD
 echo -e "${red}Creating directories needed by MPD and downloading webradios...${NC}" 
 mkdir /mnt/nas-nfs
-chmod 777 /mnt/nas-nfs
 mkdir /mnt/nas-samba
-chmod 777 /mnt/nas-samba
 wget http://archphile.org/lab/webradio.tar.gz
 tar xvfz webradio.tar.gz
 mv webradio /mnt/
 rm webradio.tar.gz
-chmod 777 /mnt/webradio
 mkdir /mnt/usb-disk
-chmod 777 /mnt/usb-disk
 mkdir /var/lib/mpd/music
 chown -R mpd /var/lib/mpd
 cd /var/lib/mpd/music
