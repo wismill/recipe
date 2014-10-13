@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Udoo V2.00############################
+######################Archphile Creation Script for Udoo V2.1############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -63,6 +63,10 @@ ln -sf /dev/null ~/.bash_history
 # Adding Archphile repository and installing needed packages
 echo -e "${red}Adding Archphile Repository...${NC}" 
 cat >> /etc/pacman.conf <<"EOF"
+#[arm7-testing]
+#SigLevel = Never
+#Server = http://archphile.org/repo/arm7-testing
+
 [archphile]
 SigLevel = Never
 Server = http://archphile.org/repo/udoo-quad
