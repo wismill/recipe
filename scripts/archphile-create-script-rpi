@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V2.1############################
+######################Archphile Creation Script for Raspberry Pi V2.2############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -97,6 +97,7 @@ mkdir /mnt/nas-samba
 wget http://archphile.org/lab/webradio.tar.gz
 tar xvfz webradio.tar.gz
 mv webradio /mnt/
+chown root:root /mnt/webradio
 rm webradio.tar.gz
 mkdir /mnt/usb-disk
 mkdir /var/lib/mpd/music
