@@ -135,8 +135,6 @@ cat > /etc/modules-load.d/i2s.conf <<"EOF"
 #snd_soc_hifiberry_amp
 #snd_soc_rpi_dac
 #snd_soc_iqaudio_dac
-#snd_soc_ess9018
-#snd_soc_rpi_ess9018
 EOF
 
 # udevil configuration
