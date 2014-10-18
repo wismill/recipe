@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V2.4############################
+######################Archphile Creation Script for Raspberry Pi V2.5############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -119,6 +119,21 @@ echo -e "${red}Creating Alsa configuration...${NC}"
 cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
 #options snd slots=snd_usb_audio,snd_bcm2835
 options snd_usb_audio index=0 nrpacks=1
+EOF
+
+# I2S configuaation
+echo -e "${red}Creating I2S configuration...${NC}" 
+cat > /etc/modules-load.d/i2s.conf <<"EOF"
+#snd_soc_bcm2708
+#snd_soc_bcm2708_i2s
+#bcm2708_dmaengine
+#snd_soc_pcm5102a
+#snd_soc_hifiberry_dac
+#snd_soc_hifiberry_dacplus
+#snd_soc_hifiberry_digi
+#snd_soc_hifiberry_amp
+#snd_soc_rpi_dac
+#snd_soc_iqaudio_dac
 EOF
 
 # udevil configuration
