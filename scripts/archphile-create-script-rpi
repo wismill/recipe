@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V2.3############################
+######################Archphile Creation Script for Raspberry Pi V2.4############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -28,9 +28,10 @@ EOF
 echo -e "${red}Disallowing dhcpcd to change DNS servers...${NC}" 
 echo "nohook resolv.conf" >>/etc/dhcpcd.conf
 
-# Disabling ipv6
+# Disabling ipv6 and onboard sound card
 cat > /etc/modprobe.d/blacklist.conf <<"EOF"
 blacklist ipv6
+blacklist snd_bcm2835
 EOF
 
 # Network Configuration
@@ -116,7 +117,7 @@ gpasswd -a mpd audio
 # Alsa configuration
 echo -e "${red}Creating Alsa configuration...${NC}" 
 cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
-options snd slots=snd_usb_audio,snd_bcm2835
+#options snd slots=snd_usb_audio,snd_bcm2835
 options snd_usb_audio index=0 nrpacks=1
 EOF
 
