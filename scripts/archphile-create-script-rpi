@@ -124,7 +124,6 @@ EOF
 # I2S configuaation
 echo -e "${red}Creating I2S configuration...${NC}" 
 cat > /etc/modules-load.d/i2s.conf <<"EOF"
-#
 #snd_soc_bcm2708
 #snd_soc_bcm2708_i2s
 #bcm2708_dmaengine
