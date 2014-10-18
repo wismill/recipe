@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Udoo V2.2############################
+######################Archphile Creation Script for Udoo V2.3############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -99,7 +99,7 @@ systemctl enable avahi-daemon
 echo -e "${red}Creating directories needed by MPD and downloading webradios...${NC}" 
 mkdir /mnt/nas-nfs
 mkdir /mnt/nas-samba
-wget http://archphile.org/lab/webradio.tar.gz
+wget http://archphile.org/lab/files/webradio.tar.gz
 tar xvfz webradio.tar.gz
 mv webradio /mnt/
 chown root:root /mnt/webradio
