@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V2.8############################
+######################Archphile Creation Script for Raspberry Pi V2.9############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -124,7 +124,7 @@ EOF
 # I2S configuaation
 echo -e "${red}Creating I2S configuration...${NC}" 
 wget http://archphile.org/lab/files/i2s.conf
-mv i2s.conf /etc/modules.load.d/
+mv i2s.conf /etc/modules-load.d/
 
 # udevil configuration
 echo -e "${red}Creating udevil configuration and enabling devmon service...${NC}" 
