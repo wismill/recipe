@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Cubox-i V2.2############################
+######################Archphile Creation Script for Cubox-i V2.3############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -74,7 +74,7 @@ Server = http://archphile.org/repo/udoo-quad
 EOF
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
-pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi firmware-brcm43xx wpa_supplicant --noconfirm
+pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi firmware-brcm43xx wpa_supplicant --noconfirm
 
 # Temporary telnet installation and configuration until ssh over wifi is fixed:
 echo -e "${red}Installing and configring telnet - You will have to manually enable the service...${NC}"
