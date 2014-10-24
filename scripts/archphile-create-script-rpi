@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V3.0############################
+######################Archphile Creation Script for Raspberry Pi V3.1############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -74,7 +74,7 @@ Server = http://archphile.org/repo/rpi
 EOF
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
-pacman -S mpd-archphile mpc ympd-archphile archphile-optimize rpi-update-git upmpdcli-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant --noconfirm
+pacman -S mpd-archphile mpc ympd-archphile archphile-optimize rpi-update-git upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant --noconfirm
 
 # Removing unneeded packages and cleaning pacman cache
 echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}" 
