@@ -33,6 +33,7 @@ echo -e "${red}Disabling various modules...${NC}"
 cat > /etc/modprobe.d/blacklist.conf <<"EOF"
 blacklist ipv6
 blacklist gpio_ir_recv
+blacklist rpcsec_gss_krb5
 EOF
 
 # Network Configuration
