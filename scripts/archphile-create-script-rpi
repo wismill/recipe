@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V3.3############################
+######################Archphile Creation Script for Raspberry Pi V3.4############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -28,7 +28,8 @@ EOF
 echo -e "${red}Disallowing dhcpcd to change DNS servers...${NC}" 
 echo "nohook resolv.conf" >>/etc/dhcpcd.conf
 
-# Disabling ipv6 and onboard sound card
+# Disabling ipv6, onboard sound card and rpcsec_gss_krb5
+echo -e "${red}Disabling various modules...${NC}" 
 cat > /etc/modprobe.d/blacklist.conf <<"EOF"
 blacklist ipv6
 blacklist snd_bcm2835
