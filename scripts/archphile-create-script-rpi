@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V3.1############################
+######################Archphile Creation Script for Raspberry Pi V3.2############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -64,9 +64,9 @@ ln -sf /dev/null ~/.bash_history
 # Adding Archphile repository and installing needed packages
 echo -e "${red}Adding Archphile Repository...${NC}" 
 cat >> /etc/pacman.conf <<"EOF"
-[rpi-testing]
-SigLevel = Never
-Server = http://archphile.org/repo/rpi-testing
+#[rpi-testing]
+#SigLevel = Never
+#Server = http://archphile.org/repo/rpi-testing
 
 [archphile]
 SigLevel = Never
