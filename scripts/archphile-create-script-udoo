@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Udoo V2.6############################
+######################Archphile Creation Script for Udoo V2.7############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
