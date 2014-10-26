@@ -65,14 +65,15 @@ ln -sf /dev/null ~/.bash_history
 # Adding Archphile repository and installing needed packages
 echo -e "${red}Adding Archphile Repository...${NC}" 
 cat >> /etc/pacman.conf <<"EOF"
-[arm7-testing]
-SigLevel = Never
-Server = http://archphile.org/repo/arm7-testing
+#[arm7-testing]
+#SigLevel = Never
+#Server = http://archphile.org/repo/arm7-testing
 
 [archphile]
 SigLevel = Never
-Server = http://archphile.org/repo/udoo-quad
+Server = http://archphile.org/repo/arm7
 EOF
+
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
 pacman -S linux-armv7
