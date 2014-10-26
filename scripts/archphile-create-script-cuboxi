@@ -74,6 +74,7 @@ cat >> /etc/pacman.conf <<"EOF"
 SigLevel = Never
 Server = http://archphile.org/repo/arm7
 EOF
+
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
 pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi firmware-brcm43xx wpa_supplicant --noconfirm
