@@ -84,8 +84,8 @@ echo -e "${red}Installing wifi drivers...${NC}"
 pacman -Rcsn firmware-brcm43xx
 wget http://archphile.org/lab/files/cubox-wifi/brcmfmac4329-sdio.txt
 wget http://archphile.org/lab/files/cubox-wifi/brcmfmac4330-sdio.txt
-mv brcmfmac4329-sdio.txt /usr/lib/firmware/brcm
-mv brcmfmac4330-sdio.txt /usr/lib/firmware/brcm
+mv brcmfmac4329-sdio.txt /usr/lib/firmware/brcm/
+mv brcmfmac4330-sdio.txt /usr/lib/firmware/brcm/
 
 # Temporary telnet installation and configuration until ssh over wifi is fixed:
 echo -e "${red}Installing and configring telnet - You will have to manually enable the service...${NC}"
