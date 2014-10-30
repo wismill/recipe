@@ -106,7 +106,7 @@ mkdir /mnt/nas-samba
 wget http://archphile.org/lab/files/webradio.tar.gz
 tar xvfz webradio.tar.gz
 mv webradio /mnt/
-chown root:root /mnt/webradio
+chown -R root:root /mnt/webradio
 rm webradio.tar.gz
 mkdir /mnt/usb-disk
 mkdir /var/lib/mpd/music
