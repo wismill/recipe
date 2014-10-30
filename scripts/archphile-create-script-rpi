@@ -145,7 +145,7 @@ sed -i 's/^#Storage=auto.*/Storage=none/' /etc/systemd/journald.conf
 rm -R /var/log
 
 # disabling power management for edimax wifi dongles
-echo -e "${red}Disabling powemanagemend for Edimax wifi dongles...${NC}
+echo -e "${red}Disabling powemanagement for Edimax wifi dongles...${NC}
 cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
 options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
 EOF
