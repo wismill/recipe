@@ -155,7 +155,7 @@ echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}"
 # Script deletion
 rm /root/archphile-create-script*
 
-
+.
 
 
 
