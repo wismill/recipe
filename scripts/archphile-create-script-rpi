@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V3.6############################
+######################Archphile Creation Script for Raspberry Pi V3.5############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -143,12 +143,6 @@ systemctl enable devmon@root
 echo -e "${red}Changing journald.conf configuration and deleting /var/log...${NC}" 
 sed -i 's/^#Storage=auto.*/Storage=none/' /etc/systemd/journald.conf
 rm -R /var/log
-
-# disabling power management for edimax wifi dongles
-echo -e "${red}Disabling powemanagemend for Edimax wifi dongles...${NC}
-cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
-options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
-EOF
 
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
