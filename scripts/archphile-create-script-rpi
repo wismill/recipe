@@ -146,7 +146,7 @@ rm -R /var/log
 
 # disabling power management for edimax wifi dongles
 echo -e "${red}Disabling power management for Edimax wifi dongles...${NC}
-cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
+cat > /etc/modprobe.d/8192cu.conf <<"EOF"
 options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
 EOF
 
