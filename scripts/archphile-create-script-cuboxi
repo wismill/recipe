@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Cubox-i V2.6############################
+######################Archphile Creation Script for Cubox-i V2.7############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -77,7 +77,7 @@ EOF
 
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
-pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant dhcpcd--noconfirm
+pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant wireless_tools dhcpcd--noconfirm
 
 # alternative method for wifi drivers installation
 echo -e "${red}Installing wifi drivers...${NC}" 
@@ -164,6 +164,10 @@ systemctl enable devmon@root
 echo -e "${red}Changing journald.conf configuration and deleting /var/log...${NC}" 
 sed -i 's/^#Storage=auto.*/Storage=none/' /etc/systemd/journald.conf
 rm -R /var/log
+
+# turning off wifi power management
+echo -e "${red}Turning off wifi power management...${NC}" 
+sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
 
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
