@@ -6,7 +6,7 @@
 tmpfs /var/log tmpfs nodev,nosuid,noatime,mode=1777,size=20m 0 0
 
 #SAMBA Share - Public Share
-#//xxx.xxx.xxx.xxx/mymusicdir /mnt/nas-samba cifs guest,ro,nolock,noauto,x-systemd.automount,x-systemd.device-timeout=10,sec=ntlm,rsize=8048,wsize=8096
+#//xxx.xxx.xxx.xxx/mymusicdir /mnt/nas-samba cifs guest,ro,iocharset=utf8,nolock,noauto,x-systemd.automount,x-systemd.device-timeout=10,sec=ntlm,rsize=8048,wsize=8096
 
 #SAMBA Share - Share using username/paswword
 #//xxx.xxx.xxx.xxx/mymusicdir /mnt/nas-samba cifs username=msusername,password=mspassword,ro,nolock,noauto,x-systemd.automount,x-systemd.device-timeout=10,sec=ntlm,rsize=8048,wsize=8096
