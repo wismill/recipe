@@ -130,6 +130,7 @@ sed -i 's/^#Storage=auto.*/Storage=none/' /etc/systemd/journald.conf
 rm -R /var/log
 
 # updating to latest ralink wireless firmware
+echo -e "${red}Updating wireless firmware rt2870usb to version 0.32...${NC}" 
 wget http://archphile.org/lab/files/udoo-wireless/RT2870_Firmware_V32/rt2870.bin
 mv rt2870.bin /lib/firmware/rt2870.bin
 
