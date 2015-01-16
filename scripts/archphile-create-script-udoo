@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Udoo V2.9############################
+######################Archphile Creation Script for Udoo V3.0############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -133,6 +133,12 @@ rm -R /var/log
 # turning off wifi power management
 echo -e "${red}Turning off wifi power management...${NC}" 
 sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
+
+# fix for rt2800usb wireless driver
+echo -e "${red}Applying extra options for rt2800usb module...${NC}" 
+cat >> /etc/modprobe.d/rt2800usb.conf <<"EOF"
+options rt2800usb nohwcrypt=1
+EOF
 
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
