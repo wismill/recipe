@@ -141,7 +141,7 @@ sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archp
 # fix for rt2800usb wireless driver
 echo -e "${red}Applying extra options for rt2800usb module...${NC}" 
 cat >> /etc/modprobe.d/rt2800usb.conf <<"EOF"
-options rt2800usb nohwcrypt=1
+options rt2800usb nohwcrypt=0
 EOF
 
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
