@@ -135,8 +135,8 @@ wget http://archphile.org/lab/files/udoo-wireless/RT2870_Firmware_V33/rt2870.bin
 mv rt2870.bin /lib/firmware/rt2870.bin
 
 # turning off wifi power management
-echo -e "${red}Turning off wifi power management...${NC}" 
-sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
+#echo -e "${red}Turning off wifi power management...${NC}" 
+#sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
 
 # fix for rt2800usb wireless driver
 echo -e "${red}Applying extra options for rt2800usb module...${NC}" 
