@@ -155,8 +155,14 @@ options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
 EOF
 
 # turning off wifi power management
-#echo -e "${red}Turning off wifi power management...${NC}" 
-#sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
+echo -e "${red}Turning off wifi power management...${NC}" 
+sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
+
+# temporary fix for ControlGroup and ControlGroupAttribute mpd.service options
+echo -e "${red}Applying temporart fix for mpd.service ...${NC}" 
+sed -e '/ControlGroup/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
+sed -e '/ControlGroupAttribute/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
+systemctl reenable mpd
 
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
