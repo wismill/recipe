@@ -33,6 +33,9 @@ echo "nohook resolv.conf" >>/etc/dhcpcd.conf
 echo -e "${red}Disabling various modules...${NC}" 
 cat > /etc/modprobe.d/blacklist.conf <<"EOF"
 blacklist rpcsec_gss_krb5
+blacklist imxdrm
+blacklist imx-hdmi
+blacklist imx_ipuv3_crtc
 EOF
 
 # Network Configuration
