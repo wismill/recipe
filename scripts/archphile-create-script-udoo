@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Udoo V3.0############################
+######################Archphile Creation Script for Udoo V3.1############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -29,7 +29,7 @@ EOF
 echo -e "${red}Disallowing dhcpcd to change DNS servers...${NC}" 
 echo "nohook resolv.conf" >>/etc/dhcpcd.conf
 
-# Disabling ipv6
+# Disabling various modules
 echo -e "${red}Disabling various modules...${NC}" 
 cat > /etc/modprobe.d/blacklist.conf <<"EOF"
 blacklist rpcsec_gss_krb5
@@ -41,6 +41,11 @@ wget http://archphile.org/lab/files/archphile-network
 mv archphile-network /etc/netctl/archphile-network
 systemctl disable systemd-networkd
 netctl enable archphile-network
+
+# Disabling ipv6
+echo "net.ipv6.conf.all.disable_ipv6=1" > /etc/sysctl.d/disableipv6.conf
+echo 'blacklist ipv6' >> /etc/modprobe.d/blacklist.conf
+sed -i '/::/s%^%#%g' /etc/hosts
 
 # Locale and timezone configuration
 systemctl disable systemd-timesyncd
