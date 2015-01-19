@@ -96,6 +96,10 @@ mkdir /etc/systemd/system/mpd.service.d
 wget http://archphile.org/lab/files/user.conf
 mv user.conf /etc/systemd/system/mpd.service.d/
 
+# Setting multi-user.target as the new default target
+echo -e "${red}Setting default systemd target...${NC}" 
+systemctl set-default -f multi-user.target
+
 # Enabling systemd services
 echo -e "${red}Enabling needed Systemd services...${NC}" 
 systemctl enable mpd
