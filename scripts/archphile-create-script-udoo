@@ -36,6 +36,7 @@ blacklist rpcsec_gss_krb5
 blacklist imxdrm
 blacklist imx-hdmi
 blacklist imx_ipuv3_crtc
+blacklist imx_ipu_v3
 EOF
 
 # Network Configuration
