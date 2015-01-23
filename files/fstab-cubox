@@ -1,5 +1,5 @@
 # <file system>	<dir>	<type>	<options>	<dump>	<pass>
-/dev/mmcblk0p1 	/	ext4	noatime,discard 0	0
+/dev/mmcblk0p1 	/	ext4	noatime,nouser_xattr,discard 0	0
 
 
 #Finetuning for less writes on SD Card - Warning!!! Logs are deleted after each reboot.
