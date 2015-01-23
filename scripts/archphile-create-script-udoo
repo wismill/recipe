@@ -13,7 +13,7 @@ hostnamectl set-hostname archphile
 
 # /etc/motd text
 echo -e "${red}Downloading sample /etc/motd file...${NC}" 
-wget http://archphile.org/lab/files/motd-udoo
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/motd-udoo
 mv motd-udoo /etc/motd
 nano /etc/motd
 
@@ -42,7 +42,7 @@ EOF
 
 # Network Configuration
 echo -e "${red}Changing netctl network configuration...${NC}" 
-wget http://archphile.org/lab/files/archphile-network
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/archphile-network
 mv archphile-network /etc/netctl/archphile-network
 systemctl disable systemd-networkd
 systemctl mask systemd-networkd
@@ -63,12 +63,12 @@ locale-gen
 echo "LANG="en_US.UTF-8"" > /etc/locale.conf
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime
-wget http://archphile.org/lab/files/ntp.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/ntp.conf
 mv ntp.conf /etc/ntp.conf
 
 # /etc/fstab tweaking and linking .bash_history to /dev/null
 echo -e "${red}Changing fstab entries...${NC}" 
-wget http://archphile.org/lab/files/fstab-udoo
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/fstab-udoo
 mv fstab-udoo /etc/fstab 
 echo -e "${red}Linking .bash_history to /dev/null...${NC}" 
 rm /root/.bash_history
@@ -96,7 +96,7 @@ pacman -Scc
 # Bypassing new User=mpd systemd configuration 
 echo -e "${red}Fetching user.conf in order to bypass User=mpd...${NC}" 
 mkdir /etc/systemd/system/mpd.service.d
-wget http://archphile.org/lab/files/user.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/user.conf
 mv user.conf /etc/systemd/system/mpd.service.d/
 
 # Setting multi-user.target as the new default target
@@ -131,7 +131,7 @@ gpasswd -a mpd audio
 
 # udevil configuration
 echo -e "${red}Creating udevil configuration and enabling devmon service...${NC}" 
-wget http://archphile.org/lab/files/udevil.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/udevil.conf
 mv udevil.conf /etc/udevil/udevil.conf
 systemctl enable devmon@root
 
