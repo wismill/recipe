@@ -94,7 +94,7 @@ mv brcmfmac4329-sdio.bin /usr/lib/firmware/brcm/
 mv brcmfmac4330-sdio.bin /usr/lib/firmware/brcm/
 
 # Temporary telnet installation and configuration until ssh over wifi is fixed:
-echo -e "${red}Installing and configring telnet - You will have to manually enable the service...${NC}"
+echo -e "${red}Installing and configuring telnet - You will have to manually enable the service...${NC}"
 pacman -S xinetd
 sed -i 's/^	disable			= yes*/	disable			= no/' /etc/xinetd.d/telnet
 
