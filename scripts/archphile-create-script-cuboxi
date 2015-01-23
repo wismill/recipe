@@ -44,8 +44,6 @@ systemctl disable systemd-networkd
 systemctl mask systemd-networkd
 netctl enable archphile-network
 
-
-
 # Locale and timezone configuration
 systemctl disable systemd-timesyncd
 systemctl mask systemd-timesyncd
