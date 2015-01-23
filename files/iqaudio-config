@@ -1,0 +1,147 @@
+#!/bin/bash
+###################### Iqaudio Dac and Dac+ configuration script V0.3 ############################
+clear
+red='\e[0;31m'
+NC='\e[0m'
+
+# Disabling unmute
+echo -e "${red}Disabling unmute command...${NC}" 
+cat > /usr/bin/archphile-optimize <<"EOF"
+#!/bin/bash
+# this command is used in order to unmute dac and set the volume to 100% during boot
+#
+#/usr/bin/unmute
+
+# please replace x with the id of your device
+# for further information visit http://archphile.org/howto/troubleshooting-pops-and-clicks
+#echo -n "x-x.x:x.x" > /sys/bus/usb/drivers/usbhid/unbind
+
+# this command sets noop scheduler during boot
+echo noop > /sys/block/mmcblk0/queue/scheduler
+
+# enable the command below in order to set swappiness to 0
+#echo 0 > /proc/sys/vm/swappiness
+
+# commands to change various kernel parameters (Similar to Volumio/Runeaudio profiles)
+#echo 6000000 > /proc/sys/kernel/sched_latency_ns
+#echo 1000000 > /proc/sys/kernel/sched_rt_period_us
+#echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
+
+# this command sets the correct time during boot - Please see the link below for ntp
+# and timezone configuration: http://archphile.org/howto/changing-system-configuration-in-archphile
+exec /usr/bin/ntpd -gq || true
+EOF
+
+# Modules selection
+echo -e "${red}Setting modules in i2s.conf...${NC}"
+cat > /etc/modules-load.d/i2s.conf <<"EOF"
+### Iqaudio Dac ###
+snd_soc_bcm2708_i2s
+bcm2708_dmaengine
+snd_soc_pcm512x
+snd_soc_iqaudio_dac
+
+### Hifiberry Dac ###
+#bcm2708_dmaengine
+#snd_soc_pcm5102a
+#snd_soc_hifiberry_dac
+
+### Hifiberry Dac+ ###
+#snd_soc_bcm2708_i2s
+#bcm2708_dmaengine
+#snd_soc_hifiberry_dacplus
+
+### Hifiberry Digi and Digi+ ###
+#snd_soc_bcm2708_i2s
+#bcm2708_dmaengine
+#snd_soc_hifiberry_digi
+
+### Hifiberry Amp ###
+#snd_soc_bcm2708_i2s
+#bcm2708_dmaengine
+#snd_soc_hifiberry_amp
+
+### Rpi Dac ###
+#snd_soc_bcm2708_i2s
+#bcm2708_dmaengine
+#snd_soc_pcm5102a
+#snd_soc_rpi_dac
+
+### Mambo Dac V3 - Mamboberry ### 
+#snd_soc_bcm2708_i2s
+#bcm2708_dmaengine
+#snd_soc_pcm5102a
+#snd_soc_hifiberry_dac
+
+### Buffalo Dac ###
+#snd_soc_bcm2708_i2s
+#bcm2708_dmaengine
+#snd-soc-pcm1794a
+#snd_soc_rpi_dac
+EOF
+
+#Loading the modules for immediate use
+echo -e "${red}Loading the modules for immediate use...${NC}"
+modprobe snd_soc_bcm2708_i2s
+modprobe bcm2708_dmaengine
+modprobe snd_soc_pcm512x
+modprobe snd_soc_iqaudio_dac
+
+# mpd.conf configuration
+echo -e "${red}Changing MPD configuration and restarting MPD...${NC}"
+cat > /etc/mpd.conf <<"EOF"
+###################################
+##Archphile Default Configuration##
+
+
+follow_outside_symlinks         "yes"
+follow_inside_symlinks  "yes"
+db_file         "/var/lib/mpd/mpd.db"
+log_file        "/var/log/mpd.log"
+pid_file        "/var/run/mpd/pid"
+music_directory         "/var/lib/mpd/music"
+playlist_directory      "/var/lib/mpd/playlists"
+state_file      "/var/lib/mpd/mpdstate"
+user    "mpd"
+bind_to_address         "any"
+port    "6600"
+log_level       "default"
+volume_normalization    "no"
+audio_buffer_size       "2048"
+buffer_before_play      "20%"
+filesystem_charset      "UTF-8"
+id3v1_encoding  "UTF-8"
+gapless_mp3_playback    "yes"
+auto_update     "no"
+mixer_type      "disabled"
+group   "audio"
+max_connections "20"
+restore_paused "yes"
+
+input {
+                plugin "curl"
+}
+
+audio_output {
+enabled         "yes"
+type            "alsa"
+name            "Iqaudio Dac+"
+mixer_control   "Playback Digital"
+mixer_device    "hw:0"
+mixer_index     "0"
+device          "hw:0,0"
+auto_resample   "no"
+auto_channels   "no"
+auto_format     "no"
+}
+EOF
+systemctl restart mpd
+#sometimes it asks for daemon-reload - issue to be investigated
+systemctl daemon-reload
+
+# Setting volume to 0 db
+echo -e "${red}Setting volume to 0 db...${NC}"
+amixer sset "Playback Digital" 96%
+
+echo -e "${red}Everything set up. Below you should see iqaudio Pi-Dac+ as card 0${NC}"
+aplay -l
