@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi V3.7############################
+######################Archphile Creation Script for Raspberry Pi V3.8############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -13,7 +13,7 @@ hostnamectl set-hostname archphile
 
 # /etc/motd text
 echo -e "${red}Downloading sample /etc/motd file...${NC}" 
-wget http://archphile.org/lab/files/motd-rpi
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/motd-rpi
 mv motd-rpi /etc/motd
 nano /etc/motd
 
@@ -38,7 +38,7 @@ EOF
 
 # Network Configuration
 echo -e "${red}Changing netctl network configuration...${NC}" 
-wget http://archphile.org/lab/files/archphile-network
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/archphile-network
 mv archphile-network /etc/netctl/archphile-network
 systemctl disable systemd-networkd
 systemctl mask systemd-networkd
@@ -59,12 +59,12 @@ locale-gen
 echo "LANG="en_US.UTF-8"" > /etc/locale.conf
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime
-wget http://archphile.org/lab/files/ntp.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/ntp.conf
 mv ntp.conf /etc/ntp.conf
 
 # /etc/fstab tweaking and linking .bash_history to /dev/null
 echo -e "${red}Changing fstab entries...${NC}" 
-wget http://archphile.org/lab/files/fstab-rpi
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/fstab-rpi
 mv fstab-rpi /etc/fstab 
 echo -e "${red}Linking .bash_history to /dev/null...${NC}" 
 rm /root/.bash_history
@@ -91,7 +91,7 @@ pacman -Scc
 # Bypassing new User=mpd systemd configuration 
 echo -e "${red}Fetching user.conf in order to bypass User=mpd...${NC}" 
 mkdir /etc/systemd/system/mpd.service.d
-wget http://archphile.org/lab/files/user.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/user.conf
 mv user.conf /etc/systemd/system/mpd.service.d/
 
 # Setting multi-user.target as the new default target
@@ -109,7 +109,7 @@ systemctl enable avahi-daemon
 echo -e "${red}Creating directories needed by MPD and downloading webradios...${NC}" 
 mkdir /mnt/nas-nfs
 mkdir /mnt/nas-samba
-wget http://archphile.org/lab/files/webradio.tar.gz
+wget https://github.com/archphile/recipe/raw/master/files/webradio.tar.gz
 tar xvfz webradio.tar.gz
 mv webradio /mnt/
 chown -R root:root /mnt/webradio
@@ -133,16 +133,16 @@ EOF
 
 # I2S configuaation
 echo -e "${red}Creating I2S configuration...${NC}" 
-wget http://archphile.org/lab/files/i2s.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s.conf
 mv i2s.conf /etc/modules-load.d/
 # temp fix for 24/96 and 24/192 playback
-wget http://archphile.org/lab/i2s/linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz
+wget https://github.com/archphile/recipe/raw/master/files/rpi_kernel_i2s/linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz
 pacman -U linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz --noconfirm
 rm linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz
 
 # udevil configuration
 echo -e "${red}Creating udevil configuration and enabling devmon service...${NC}" 
-wget http://archphile.org/lab/files/udevil.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/udevil.conf
 mv udevil.conf /etc/udevil/udevil.conf
 systemctl enable devmon@root
 
@@ -167,7 +167,7 @@ rm -R /var/log
 # disabling power management for edimax wifi dongles
 echo -e "${red}Disabling power management for Edimax wifi dongles...${NC}"
 cat > /etc/modprobe.d/8192cu.conf <<"EOF"
-options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
+#options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
 EOF
 
 # turning off wifi power management
