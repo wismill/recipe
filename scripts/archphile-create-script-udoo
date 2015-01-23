@@ -20,6 +20,7 @@ nano /etc/motd
 # Changing DNS servers
 echo -e "${red}Changing to Google DNS servers...${NC}" 
 systemctl disable systemd-resolved
+systemctl mask systemd-resolved
 rm /etc/resolv.conf
 cat > /etc/resolv.conf <<"EOF"
 nameserver 8.8.8.8
@@ -44,6 +45,7 @@ echo -e "${red}Changing netctl network configuration...${NC}"
 wget http://archphile.org/lab/files/archphile-network
 mv archphile-network /etc/netctl/archphile-network
 systemctl disable systemd-networkd
+systemctl mask systemd-networkd
 netctl enable archphile-network
 
 # Disabling ipv6
@@ -53,6 +55,7 @@ sed -i '/::/s%^%#%g' /etc/hosts
 
 # Locale and timezone configuration
 systemctl disable systemd-timesyncd
+systemctl mask systemd-timesyncd
 pacman -Sy ntp --noconfirm
 echo -e "${red}Changing locale, timezone and ntp configuration...${NC}" 
 sed -i 's/^#en_US.UTF-8 UTF-8.*/en_US.UTF-8 UTF-8/' /etc/locale.gen
@@ -139,7 +142,15 @@ systemctl enable devmon@root
 # journald.conf configuration and /var/log deletion
 echo -e "${red}Changing journald.conf configuration and deleting /var/log...${NC}" 
 sed -i 's/^#Storage=auto.*/Storage=none/' /etc/systemd/journald.conf
+ystemctl disable systemd-journald
+systemctl mask systemd-journald
+systemctl mask systemd-journal-flush.service
 rm -R /var/log
+
+# disabling systemd-logind
+echo -e "${red}Disabling systemd-logind...${NC}"
+systemctl disable systemd-logind
+systemctl mask systemd-logind
 
 # updating to latest ralink wireless firmware
 echo -e "${red}Updating wireless firmware rt2870usb to version 0.33...${NC}" 
