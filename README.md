@@ -28,7 +28,9 @@ The last step is to download and run the script. The direct links of the scripts
 For example, if you have a Raspberry Pi you have to do the following:
 
 wget ttps://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-rpi
+
 chmod +x archphile-create-script-rpi
+
 ./archphile-create-script-rpi
 
 
