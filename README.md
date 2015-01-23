@@ -13,6 +13,7 @@ http://archlinuxarm.org/platforms/armv7/freescale/udoo
 - for Cubox-i:
 http://archlinuxarm.org/platforms/armv7/freescale/cubox-i
 
+
 After that, login to your fresh ArchlinuxARM installation and install wget:
 
 pacman -Sy wget
@@ -22,6 +23,7 @@ The last step is to download and run the script. The direct links of the scripts
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-rpi
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-udoo
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-cuboxi
+
 
 For example, if you have a Raspberry Pi you have to do the following:
 
