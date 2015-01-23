@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Cubox-i V2.8############################
+######################Archphile Creation Script for Cubox-i V2.9############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
