@@ -180,6 +180,10 @@ sed -e '/ControlGroup/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
 sed -e '/ControlGroupAttribute/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
 systemctl reenable mpd
 
+# changing /etc/issue message
+echo -e "${red}Changing /etc/issue message ...${NC}" 
+echo "Archphile \r (\l)" > /etc/issue
+
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
 # Script deletion
