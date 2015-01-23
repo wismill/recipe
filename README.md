@@ -4,5 +4,37 @@ recipe - installation scripts and files needed for Archphile
 This repository contains some very basic scripts that I use in order to create archphile images. The scrips are dependent 
 on ArchlinuxARM builds for the supported devices, which means that they might not work when ArchlinuxARM release a new image.
 
+In order to use these scripts you must first install ArchlinuxARM.
+
+- for Raspberry Pi:
+http://archlinuxarm.org/platforms/armv6/raspberry-pi
+
+- for Udoo:
+http://archlinuxarm.org/platforms/armv7/freescale/udoo
+
+- for Cubox-i:
+http://archlinuxarm.org/platforms/armv7/freescale/cubox-i
+
+After that, login to your fresh ArchlinuxARM installation and install wget:
+
+pacman -Sy wget
+
+The last step is to download and run the script. The direct links of the scripts are:
+
+- https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-rpi
+- https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-udoo
+- https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-cuboxi
+
+For example, if you have a Raspberry Pi you have to do the following:
+
+wget ttps://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-rpi
+chmod +x archphile-create-script-rpi
+./archphile-create-script-rpi
+
+
+
+
+
+
 
 
