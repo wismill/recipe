@@ -114,7 +114,7 @@ systemctl enable avahi-daemon
 echo -e "${red}Creating directories needed by MPD and downloading webradios...${NC}" 
 mkdir /mnt/nas-nfs
 mkdir /mnt/nas-samba
-wget http://archphile.org/lab/files/webradio.tar.gz
+wget https://github.com/archphile/recipe/raw/master/files/webradio.tar.gz
 tar xvfz webradio.tar.gz
 mv webradio /mnt/
 chown -R root:root /mnt/webradio
@@ -155,7 +155,7 @@ rm -R /var/log
 
 # updating to latest ralink wireless firmware
 echo -e "${red}Updating wireless firmware rt2870usb to version 0.33...${NC}" 
-wget http://archphile.org/lab/files/udoo-wireless/RT2870_Firmware_V33/rt2870.bin
+wget https://github.com/archphile/recipe/raw/master/files/udoo_wireless_firmware/rt2870.bin
 mv rt2870.bin /lib/firmware/rt2870.bin
 
 # turning off wifi power management
