@@ -13,7 +13,7 @@ hostnamectl set-hostname archphile
 
 # /etc/motd text
 echo -e "${red}Downloading sample /etc/motd file...${NC}" 
-wget http://archphile.org/lab/files/motd-cubox
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/motd-cubox
 mv motd-cubox /etc/motd
 nano /etc/motd
 
@@ -38,7 +38,7 @@ EOF
 
 # Network Configuration
 echo -e "${red}Changing netctl network configuration...${NC}" 
-wget http://archphile.org/lab/files/archphile-network
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/archphile-network
 mv archphile-network /etc/netctl/archphile-network
 systemctl disable systemd-networkd
 systemctl mask systemd-networkd
@@ -56,12 +56,12 @@ locale-gen
 echo "LANG="en_US.UTF-8"" > /etc/locale.conf
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime
-wget http://archphile.org/lab/files/ntp.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/ntp.conf
 mv ntp.conf /etc/ntp.conf
 
 # /etc/fstab tweaking and linking .bash_history to /dev/null
 echo -e "${red}Changing fstab entries...${NC}" 
-wget http://archphile.org/lab/files/fstab-cubox
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/fstab-cubox
 mv fstab-cubox /etc/fstab 
 echo -e "${red}Linking .bash_history to /dev/null...${NC}" 
 rm /root/.bash_history
@@ -84,12 +84,12 @@ pacman -Syu --noconfirm
 pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant wireless_tools iw dhcpcd --noconfirm
 
 # alternative method for wifi drivers installation
-echo -e "${red}Installing wifi drivers...${NC}" 
-pacman -Rcsn firmware-brcm43xx --noconfirm
-wget http://archphile.org/lab/files/cubox-wifi/brcmfmac4329-sdio.txt
-wget http://archphile.org/lab/files/cubox-wifi/brcmfmac4330-sdio.txt
-mv brcmfmac4329-sdio.txt /usr/lib/firmware/brcm/
-mv brcmfmac4330-sdio.txt /usr/lib/firmware/brcm/
+#echo -e "${red}Installing wifi drivers...${NC}" 
+#pacman -Rcsn firmware-brcm43xx --noconfirm
+#wget http://archphile.org/lab/files/cubox-wifi/brcmfmac4329-sdio.txt
+#wget http://archphile.org/lab/files/cubox-wifi/brcmfmac4330-sdio.txt
+#mv brcmfmac4329-sdio.txt /usr/lib/firmware/brcm/
+#mv brcmfmac4330-sdio.txt /usr/lib/firmware/brcm/
 
 # Temporary telnet installation and configuration until ssh over wifi is fixed:
 echo -e "${red}Installing and configring telnet - You will have to manually enable the service...${NC}"
@@ -105,13 +105,13 @@ pacman -Scc
 
 # Fetching mpd.conf for cubox-i
 echo -e "${red}Fetching mpd.conf for cubox-i...${NC}" 
-wget http://archphile.org/lab/files/mpd.conf-cubox
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/mpd.conf-cubox
 mv mpd.conf-cubox /etc/mpd.conf
 
 # Bypassing new User=mpd systemd configuration 
 echo -e "${red}Fetching user.conf in order to bypass User=mpd...${NC}" 
 mkdir /etc/systemd/system/mpd.service.d
-wget http://archphile.org/lab/files/user.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/user.conf
 mv user.conf /etc/systemd/system/mpd.service.d/
 
 # Setting multi-user.target as the new default target
@@ -129,7 +129,7 @@ systemctl enable avahi-daemon
 echo -e "${red}Creating directories needed by MPD and downloading webradios...${NC}" 
 mkdir /mnt/nas-nfs
 mkdir /mnt/nas-samba
-wget http://archphile.org/lab/files/webradio.tar.gz
+wget https://github.com/archphile/recipe/raw/master/files/webradio.tar.gz
 tar xvfz webradio.tar.gz
 mv webradio /mnt/
 chown -R root:root /mnt/webradio
@@ -160,13 +160,13 @@ EOF
 
 # udevil configuration
 echo -e "${red}Creating udevil configuration and enabling devmon service...${NC}" 
-wget http://archphile.org/lab/files/udevil.conf
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/udevil.conf
 mv udevil.conf /etc/udevil/udevil.conf
 systemctl enable devmon@root
 
 ## limits.conf configuration
 #echo -e "${red}Changing /etc/security/limits.conf configuration...${NC}" 
-#wget http://archphile.org/lab/files/limits.conf
+#https://raw.githubusercontent.com/archphile/recipe/master/files/limits.conf
 #mv limits.conf /etc/security/limits.conf
 
 # journald.conf configuration and /var/log deletion
