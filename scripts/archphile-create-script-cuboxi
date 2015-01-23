@@ -172,15 +172,15 @@ systemctl enable devmon@root
 # journald.conf configuration and /var/log deletion
 echo -e "${red}Changing journald.conf configuration and deleting /var/log...${NC}" 
 sed -i 's/^#Storage=auto.*/Storage=none/' /etc/systemd/journald.conf
-ystemctl disable systemd-journald
-systemctl mask systemd-journald
-systemctl mask systemd-journal-flush.service
+#systemctl disable systemd-journald
+#systemctl mask systemd-journald
+#systemctl mask systemd-journal-flush.service
 rm -R /var/log
 
 # disabling systemd-logind
-echo -e "${red}Disabling systemd-logind...${NC}"
-systemctl disable systemd-logind
-systemctl mask systemd-logind
+#echo -e "${red}Disabling systemd-logind...${NC}"
+#systemctl disable systemd-logind
+#systemctl mask systemd-logind
 
 # turning off wifi power management
 echo -e "${red}Turning off wifi power management...${NC}" 
