@@ -88,8 +88,8 @@ pacman -S mpd-archphile mpc ympd-archphile archphile-optimize rpi-update-git upm
 # Removing unneeded packages and cleaning pacman cache
 echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}" 
 pacman -Rcsn lvm2 mdadm reiserfsprogs xfsprogs man-db --noconfirm
-systemctl disable cronie
-systemctl mask cronie
+#systemctl disable cronie
+#systemctl mask cronie
 pacman -Scc
 
 # Bypassing new User=mpd systemd configuration 
