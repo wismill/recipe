@@ -2,7 +2,6 @@ Description='A basic dhcp ethernet connection'
 Interface=eth0
 Connection=ethernet
 IP=dhcp
-ExecUpPost='/usr/bin/ntpd -gq || true'
 
 #Description='A basic ethernet connection with static ip'
 #Interface=eth0
@@ -10,7 +9,6 @@ ExecUpPost='/usr/bin/ntpd -gq || true'
 #IP=static
 #Address=('192.168.1.148/24')
 #Gateway='192.168.1.1'
-#ExecUpPost='/usr/bin/ntpd -gq || true'
 
 #Description='A basic dhcp wireless connection without security'
 #Interface=wlan0
@@ -20,7 +18,6 @@ ExecUpPost='/usr/bin/ntpd -gq || true'
 ## Uncomment below if your ssid is hidden
 #Hidden=yes
 #IP=dhcp
-#ExecUpPost='/usr/bin/ntpd -gq || true'
 
 #Description='A basic static wireless connection without security'
 #Interface=wlan0
@@ -32,7 +29,6 @@ ExecUpPost='/usr/bin/ntpd -gq || true'
 #IP=static
 #Address=('192.168.1.148/24')
 #Gateway='192.168.1.1'
-#ExecUpPost='/usr/bin/ntpd -gq || true'
 
 #Description='A basic dhcp wireless connection with WEP/WPA security'
 #Interface=wlan0
@@ -44,7 +40,6 @@ ExecUpPost='/usr/bin/ntpd -gq || true'
 ## Uncomment below if your ssid is hidden
 #Hidden=yes
 #IP=dhcp
-#ExecUpPost='/usr/bin/ntpd -gq || true'
 
 #Description='A basic static wireless connection with WEP/WPA security'
 #Interface=wlan0
@@ -58,4 +53,3 @@ ExecUpPost='/usr/bin/ntpd -gq || true'
 #IP=static
 #Address=('192.168.1.148/24')
 #Gateway='192.168.1.1'
-#ExecUpPost='/usr/bin/ntpd -gq || true'
