@@ -36,7 +36,15 @@ echo "nohook resolv.conf" >>/etc/dhcpcd.conf
 # Disabling various modules
 echo -e "${red}Disabling various modules...${NC}" 
 cat > /etc/modprobe.d/blacklist.conf <<"EOF"
-blacklist gpio_ir_recv
+blacklist gpio_ir_recvblacklist ir_sony_decoder
+blacklist ir_rc6_decoder
+blacklist ir_rc5_sz_decoder
+blacklist ir_rc5_decoder
+blacklist ir_nec_decoder
+blacklist ir_jvc_decoder
+blacklist ir_lirc_codec
+blacklist lirc_dev
+blacklist ir_lirc_codec
 blacklist rpcsec_gss_krb5
 EOF
 
