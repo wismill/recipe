@@ -35,7 +35,7 @@ IP=dhcp
 #Connection=wireless
 #Security=wpa
 #Security=wep
-#Key='YourKey'
+#Key=YourKey
 #ESSID=YourSSID
 ## Uncomment below if your ssid is hidden
 #Hidden=yes
@@ -46,7 +46,7 @@ IP=dhcp
 #Connection=wireless
 #Security=wpa
 #Security=wep
-#Key='YourKey' 
+#Key=YourKey 
 #ESSID=YourSSID
 ## Uncomment below if your ssid is hidden
 #Hidden=yes
