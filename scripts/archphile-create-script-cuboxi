@@ -102,9 +102,9 @@ pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile
 #mv brcmfmac4330-sdio.txt /usr/lib/firmware/brcm/
 
 # Temporary telnet installation and configuration until ssh over wifi is fixed:
-echo -e "${red}Installing and configuring telnet - You will have to manually enable the service...${NC}"
-pacman -S xinetd
-sed -i 's/^	disable			= yes*/	disable			= no/' /etc/xinetd.d/telnet
+#echo -e "${red}Installing and configuring telnet - You will have to manually enable the service...${NC}"
+#pacman -S xinetd
+#sed -i 's/^	disable			= yes*/	disable			= no/' /etc/xinetd.d/telnet
 
 # Removing unneeded packages and cleaning pacman cache
 echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}" 
