@@ -132,7 +132,7 @@ gpasswd -a mpd audio
 echo -e "${red}Creating Alsa configuration...${NC}" 
 cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
 #options snd slots=snd_usb_audio,snd_bcm2835
-options snd_usb_audio index=0 nrpacks=1
+options snd_usb_audio index=0 nrpacks=8
 EOF
 
 # I2S configuaation
