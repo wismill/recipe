@@ -213,10 +213,13 @@ mkdir -p /var/www/Music
 ln -s /var/lib/mpd/music /var/www/covers
 ln -s /var/lib/mpd/music /var/www/Music
 
+# system cleanup
+echo -e "${red}Cleaning up system...${NC}" 
+rm /root/archphile-create-script*
+rm /etc/ssh/ssh_host_*
+
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
-# Script deletion
-rm /root/archphile-create-script*
 
 
 
