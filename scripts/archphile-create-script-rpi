@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi############################
+######################Archphile Creation Script for Raspberry Pi B/B+############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
@@ -79,7 +79,7 @@ echo -e "${red}Adding Archphile Repository...${NC}"
 cat >> /etc/pacman.conf <<"EOF"
 [archphile]
 SigLevel = Never
-Server = http://archphile.org/repo/rpi
+Server = http://archphile.org/repo/arm6
 EOF
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
