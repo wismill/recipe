@@ -129,20 +129,20 @@ ln -s /mnt/usb-disk
 gpasswd -a mpd audio
 
 # Alsa configuration
-echo -e "${red}Creating Alsa configuration...${NC}" 
-cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
-#options snd slots=snd_usb_audio,snd_bcm2835
-options snd_usb_audio index=0 nrpacks=8
-EOF
+#echo -e "${red}Creating Alsa configuration...${NC}" 
+#cat > /etc/modprobe.d/alsa-base.conf <<"EOF"
+##options snd slots=snd_usb_audio,snd_bcm2835
+#options snd_usb_audio index=0 nrpacks=8
+#EOF
 
 # I2S configuaation
 echo -e "${red}Creating I2S configuration...${NC}" 
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s.conf
 mv i2s.conf /etc/modules-load.d/
 # temp fix for 24/96 and 24/192 playback
-wget https://github.com/archphile/recipe/raw/master/files/rpi_kernel_i2s/linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz
-pacman -U linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz --noconfirm
-rm linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz
+#wget https://github.com/archphile/recipe/raw/master/files/rpi_kernel_i2s/linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz
+#pacman -U linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz --noconfirm
+#rm linux-raspberrypi-3.12.26-1-armv6h.pkg.tar.xz
 
 # udevil configuration
 echo -e "${red}Creating udevil configuration and enabling devmon service...${NC}" 
@@ -175,8 +175,8 @@ rm -R /var/log
 #EOF
 
 # turning off wifi power management
-echo -e "${red}Turning off wifi power management...${NC}" 
-sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
+#echo -e "${red}Turning off wifi power management...${NC}" 
+#sed -i 's/^#iwconfig wlan0 power off.*/iwconfig wlan0 power off/' /usr/bin/archphile-optimize
 
 # temporary fix for ControlGroup and ControlGroupAttribute mpd.service options
 echo -e "${red}Applying temporart fix for mpd.service ...${NC}" 
@@ -202,7 +202,6 @@ rm /etc/ssh/ssh_host_*
 
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
-.
 
 
 
