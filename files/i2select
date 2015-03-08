@@ -30,7 +30,7 @@ do
         "Hifiberry Digi")
             mv /boot/config.txt.orig /boot/config.txt
             sed -i 's/^#dtoverlay=hifiberry-dacplus.*/dtoverlay=hifiberry-dacplus/' /boot/config.txt
-            eecho -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
 			exit
 			;;
 	    "Iqaudio")
