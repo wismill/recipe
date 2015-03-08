@@ -18,42 +18,42 @@ do
         "Hifiberry")
             mv /boot/config.txt.orig /boot/config.txt
             sed -i 's/^#dtoverlay=hifiberry-dac.*/dtoverlay=hifiberry-dac/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using "systemctl reboot" command...${NC}"  
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
             exit
            ;;
         "Hifiberry Plus")
             mv /boot/config.txt.orig /boot/config.txt
             sed -i 's/^#dtoverlay=hifiberry-dacplus.*/dtoverlay=hifiberry-dacplus/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using "systemctl reboot" command...${NC}"    
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
             exit
             ;;
         "Hifiberry Digi")
             mv /boot/config.txt.orig /boot/config.txt
             sed -i 's/^#dtoverlay=hifiberry-dacplus.*/dtoverlay=hifiberry-dacplus/' /boot/config.txt
-            eecho -e "${red}Please reboot immediately using "systemctl reboot" command...${NC}"    
+            eecho -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
 			exit
 			;;
 	    "Iqaudio")
             mv /boot/config.txt.orig /boot/config.txt
             sed -i 's/^#dtoverlay=iqaudio-dac.*/dtoverlay=iqaudio-dac/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using "systemctl reboot" command...${NC}"    
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
 			exit
 			;;
 	    "Iqaudio Plus")
 	        mv /boot/config.txt.orig /boot/config.txt
             sed -i 's/^#dtoverlay=iqaudio-dacplus.*/dtoverlay=iqaudio-dacplus/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using "systemctl reboot" command...${NC}"   
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"   
 			exit
 			;;
 	    "Mamboberry")
 	        mv /boot/config.txt.orig /boot/config.txt
             sed -i 's/^#dtoverlay=hifiberry-dac.*/dtoverlay=hifiberry-dac/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using "systemctl reboot" command...${NC}" 
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}" 
             exit
             ;;
 	    "Usb Dac Configuration (Default)")
 	        mv /boot/config.txt.orig /boot/config.txt
-	        echo -e "${red}Please reboot immediately using "systemctl reboot" command...${NC}" 
+	        echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}" 
            exit
 			;;
         "Quit")
@@ -62,3 +62,7 @@ do
         *) echo Invalid option - Please choose 1-8;;
     esac
 done
+
+
+
+
