@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# This script helps you choose and configure your desired i2s dac or revert to usb dac configuration which 
+# is the default in Archphile.
