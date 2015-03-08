@@ -1,4 +1,61 @@
 #!/bin/bash
 
+
 # This script helps you choose and configure your desired i2s dac or revert to usb dac configuration which 
 # is the default in Archphile.
+
+clear
+red='\e[0;31m'
+NC='\e[0m'
+PS3='Please select the i2s dac you want to configure: '
+options=("Hifiberry" "Hifiberry Plus" "Hifiberry Digi" "Iqaudio" "Iqaudio Plus" "Mamboberry" "Usb Dac Configuration" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Hifiberry")
+            mv /boot/config.txt.orig /boot/config.txt
+            sed -i 's/^#dtoverlay=hifiberry-dac.*/dtoverlay=hifiberry-dac/' /boot/config.txt
+            echo -e "${red}Downloading sample /etc/motd file...${NC}"  
+            exit
+           ;;
+        "Hifiberry Plus")
+            mv /boot/config.txt.orig /boot/config.txt
+            sed -i 's/^#dtoverlay=hifiberry-dacplus.*/dtoverlay=hifiberry-dacplus/' /boot/config.txt
+            echo -e "${red}Downloading sample /etc/motd file...${NC}"    
+            exit
+            ;;
+        "Hifiberry Digi")
+            mv /boot/config.txt.orig /boot/config.txt
+            sed -i 's/^#dtoverlay=hifiberry-dacplus.*/dtoverlay=hifiberry-dacplus/' /boot/config.txt
+            echo -e "${red}Downloading sample /etc/motd file...${NC}"    
+			exit
+			;;
+	    "Iqaudio")
+            mv /boot/config.txt.orig /boot/config.txt
+            sed -i 's/^#dtoverlay=iqaudio-dac.*/dtoverlay=iqaudio-dac/' /boot/config.txt
+            echo -e "${red}Downloading sample /etc/motd file...${NC}"    
+			exit
+			;;
+	    "Iqaudio Plus")
+	        mv /boot/config.txt.orig /boot/config.txt
+            sed -i 's/^#dtoverlay=iqaudio-dacplus.*/dtoverlay=iqaudio-dacplus/' /boot/config.txt
+            echo -e "${red}Downloading sample /etc/motd file...${NC}"    
+			exit
+			;;
+	    "Mamboberry")
+	        mv /boot/config.txt.orig /boot/config.txt
+            sed -i 's/^#dtoverlay=hifiberry-dac.*/dtoverlay=hifiberry-dac/' /boot/config.txt
+            echo -e "${red}Downloading sample /etc/motd file...${NC}" 
+            exit
+	    "Usb Dac Configuration")
+	        mv /boot/config.txt.orig /boot/config.txt
+	        echo -e "${red}Downloading sample /etc/motd file...${NC}" 
+            exit
+			;;
+			
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
