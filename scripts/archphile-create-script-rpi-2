@@ -137,9 +137,9 @@ gpasswd -a mpd audio
 
 # I2S configuaation
 echo -e "${red}Creating I2S configuration...${NC}" 
-wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s-dac-select
-mv i2s-dac-select /usr/bin/
-chmod +x /usr/bin/i2s-dac-select
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2select
+mv i2select /usr/bin/
+chmod +x /usr/bin/i2select
 cp /boot/config.txt /boot.config.txt.orig
 #wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s.conf
 #mv i2s.conf /etc/modules-load.d/
