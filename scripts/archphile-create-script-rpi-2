@@ -140,6 +140,7 @@ echo -e "${red}Creating I2S configuration...${NC}"
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s-dac-select
 mv i2s-dac-select /usr/bin/
 chmod +x /usr/bin/i2s-dac-select
+cp /boot/config.txt /boot.config.txt.orig
 #wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s.conf
 #mv i2s.conf /etc/modules-load.d/
 # temp fix for 24/96 and 24/192 playback
