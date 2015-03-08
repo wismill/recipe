@@ -47,14 +47,14 @@ do
             sed -i 's/^#dtoverlay=hifiberry-dac.*/dtoverlay=hifiberry-dac/' /boot/config.txt
             echo -e "${red}Downloading sample /etc/motd file...${NC}" 
             exit
+            ;;
 	    "Usb Dac Configuration")
 	        mv /boot/config.txt.orig /boot/config.txt
 	        echo -e "${red}Downloading sample /etc/motd file...${NC}" 
-            exit
+           exit
 			;;
-			
         "Quit")
-            break
+           break
             ;;
         *) echo invalid option;;
     esac
