@@ -7,8 +7,11 @@
 clear
 red='\e[0;31m'
 NC='\e[0m'
+echo -e "${red}I2s DAC CONFIGURATION TOOL${NC}"
+echo -e "${red}---------------------------${NC}"
+echo -e " "
 PS3='Please select the i2s dac you want to configure: '
-options=("Hifiberry" "Hifiberry Plus" "Hifiberry Digi" "Iqaudio" "Iqaudio Plus" "Mamboberry" "Usb Dac Configuration" "Quit")
+options=("Hifiberry" "Hifiberry Plus" "Hifiberry Digi" "Iqaudio" "Iqaudio Plus" "Mamboberry" "Usb Dac Configuration (Default)" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -48,7 +51,7 @@ do
             echo -e "${red}Downloading sample /etc/motd file...${NC}" 
             exit
             ;;
-	    "Usb Dac Configuration")
+	    "Usb Dac Configuration (Default)")
 	        mv /boot/config.txt.orig /boot/config.txt
 	        echo -e "${red}Downloading sample /etc/motd file...${NC}" 
            exit
@@ -56,6 +59,6 @@ do
         "Quit")
            break
             ;;
-        *) echo invalid option;;
+        *) echo Invalid option - Please choose 1-8;;
     esac
 done
