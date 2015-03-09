@@ -28,7 +28,7 @@ do
             ;;
         "Hifiberry Digi")
             cp /boot/config.txt.orig /boot/config.txt
-            sed -i 's/^#device_tree_overlay=hifiberry-dacplus.*/device_tree_overlay=hifiberry-dacplus/' /boot/config.txt
+            sed -i 's/^#device_tree_overlay=hifiberry-digi.*/device_tree_overlay=hifiberry-digi/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
 			exit
 			;;
