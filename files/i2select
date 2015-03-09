@@ -14,19 +14,19 @@ options=("Hifiberry" "Hifiberry Plus" "Hifiberry Digi" "Iqaudio" "Iqaudio Plus" 
 select opt in "${options[@]}"
 do
     case $opt in
-        "Hifiberry")
+            "Hifiberry")
             cp /boot/config.txt.orig /boot/config.txt
             sed -i '0,/#device_tree_overlay=hifiberry-dac/s//device_tree_overlay=hifiberry-dac/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
             exit
-           ;;
-        "Hifiberry Plus")
+            ;;
+            "Hifiberry Plus")
             cp /boot/config.txt.orig /boot/config.txt
             sed -i '0,/#device_tree_overlay=hifiberry-dacplus/s//device_tree_overlay=hifiberry-dacplus/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
             exit
             ;;
-        "Hifiberry Digi")
+            "Hifiberry Digi")
             cp /boot/config.txt.orig /boot/config.txt
             sed -i '0,/#device_tree_overlay=hifiberry-digi/s//device_tree_overlay=hifiberry-digi/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
@@ -55,8 +55,8 @@ do
 	    echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}" 
             exit
 	    ;;
-        "Quit")
-           break
+            "Quit")
+             break
             ;;
         *) echo Invalid option - Please choose 1-8;;
     esac
