@@ -26,6 +26,10 @@ group   "audio"
 max_connections "20"
 restore_paused "yes"
 
+decoder {
+                plugin "ffmpeg"
+        	enabled "no"
+}
 
 input {
                 plugin "curl"
@@ -34,7 +38,7 @@ input {
 audio_output {
 enabled         "yes"
 type            "alsa"
-name            "USB DAC"
+name            "MY DAC"
 device          "hw:2,0"
 auto_resample   "no"
 auto_channels   "no"
