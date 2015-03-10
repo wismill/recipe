@@ -16,18 +16,18 @@ do
     case $opt in
             "Hifiberry")
             cp /root/.orig/config.txt.orig /boot/config.txt
-            cp /
+            cp /root/.orig/unmute.orig /usr/bin/unmute
             sed -i '0,/#device_tree_overlay=hifiberry-dac/s//device_tree_overlay=hifiberry-dac/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
             exit
             ;;
             "Hifiberry Plus")
             cp /root/.orig/config.txt.orig /boot/config.txt
-            cat > /usr/bin/unmute <<"EOF"
-            #!/bin/bash
-            # mixer settings for Hifiberry+ i2s Dac
-            amixer sset 'PCM' 96%
-            amixer sset 'Playback Boost' 0%
+cat > /usr/bin/unmute <<"EOF"
+#!/bin/bash
+# mixer settings for Hifiberry+ i2s Dac
+amixer sset 'PCM' 96%
+amixer sset 'Playback Boost' 0%
 EOF
             sed -i '0,/#device_tree_overlay=hifiberry-dacplus/s//device_tree_overlay=hifiberry-dacplus/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
@@ -35,30 +35,35 @@ EOF
             ;;
             "Hifiberry Digi")
             cp /root/.orig/config.txt.orig /boot/config.txt
+            cp /root/.orig/unmute.orig /usr/bin/unmute
             sed -i '0,/#device_tree_overlay=hifiberry-digi/s//device_tree_overlay=hifiberry-digi/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
 	    exit
 	    ;;
 	    "Iqaudio")
             cp /root/.orig/config.txt.orig /boot/config.txt
+            cp /root/.orig/unmute.orig /usr/bin/unmute
             sed -i '0,/#device_tree_overlay=iqaudio-dac/s//device_tree_overlay=iqaudio-dac/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
 	    exit
 	    ;;
 	    "Iqaudio Plus")
 	    cp /root/.orig/config.txt.orig /boot/config.txt
+            cp /root/.orig/unmute.orig /usr/bin/unmute
             sed -i '0,/#device_tree_overlay=iqaudio-dacplus/s//device_tree_overlay=iqaudio-dacplus/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"   
             exit
             ;;
 	    "Mamboberry")
 	    cp /root/.orig/config.txt.orig /boot/config.txt
+            cp /root/.orig/unmute.orig /usr/bin/unmute
             sed -i '0,/#device_tree_overlay=hifiberry-dac/s//device_tree_overlay=hifiberry-dac/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}" 
             exit
             ;;
 	    "Usb Dac Configuration (Default)")
 	    cp /root/.orig/config.txt.orig /boot/config.txt
+            cp /root/.orig/unmute.orig /usr/bin/unmute
 	    echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}" 
             exit
 	    ;;
