@@ -22,6 +22,8 @@ do
             ;;
             "Hifiberry Plus")
             cp /boot/config.txt.orig /boot/config.txt
+            echo "amixer sset 'PCM' 96%" >> /usr/bin/archphile-optimize
+            echo "amixer sset 'Playback Boost' 0%" > /usr/bin/archphile-optimize
             sed -i '0,/#device_tree_overlay=hifiberry-dacplus/s//device_tree_overlay=hifiberry-dacplus/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
             exit
