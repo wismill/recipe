@@ -134,7 +134,16 @@ gpasswd -a mpd audio
 echo -e "${red}Creating I2S configuration...${NC}" 
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2select -O /usr/bin/i2select
 chmod +x /usr/bin/i2select
-cp /boot/config.txt /boot.config.txt.orig
+mkdir /root/.orig
+cp /boot/config.txt /root/.orig/config.txt.orig
+cp /usr/bin/unmute /root/.orig/unmute.orig
+cat > /root/.orig/unmute.berryplus <<"EOF"
+#!/bin/bash
+# mixer settings for Hifiberry+ i2s Dac
+amixer sset 'PCM' 96%
+amixer sset 'Playback Boost' 0%
+EOF
+chmod +x /root/.orig/unmute.berryplus
 #wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s.conf
 #mv i2s.conf /etc/modules-load.d/
 # temp fix for 24/96 and 24/192 playback
