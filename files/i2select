@@ -18,17 +18,16 @@ do
             cp /root/.orig/config.txt.orig /boot/config.txt
             cp /root/.orig/unmute.orig /usr/bin/unmute
             sed -i '0,/#device_tree_overlay=hifiberry-dac/s//device_tree_overlay=hifiberry-dac/' /boot/config.txt
-            echo -e "${red}PCM Volume set to 96% and Playback Boost set to 0%...${NC}"
-            echo -e "${red}If you want to set volumes manually, please comment unmute section in /usr/bin/archphile-optimize...${NC}"
-            echo
-            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
             exit
             ;;
             "Hifiberry Plus")
             cp /root/.orig/config.txt.orig /boot/config.txt
             cp /root/.orig/unmute.berryplus /usr/bin/unmute
             sed -i '0,/#device_tree_overlay=hifiberry-dacplus/s//device_tree_overlay=hifiberry-dacplus/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
+            echo -e "${red}PCM Volume set to 96% and Playback Boost set to 0%...${NC}"
+            echo -e "${red}If you want to set volumes manually, please comment unmute section in /usr/bin/archphile-optimize...${NC}"
+            echo
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
             exit
             ;;
             "Hifiberry Digi")
