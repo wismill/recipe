@@ -142,6 +142,7 @@ cat > /root/.orig/unmute.berryplus <<"EOF"
 # mixer settings for Hifiberry+ i2s Dac
 amixer sset "'Playback',0" 81%
 amixer sset "'Playback',1" 81%
+amixer sset "'Playback Boost',0" 0%
 EOF
 chmod +x /root/.orig/unmute.berryplus
 #wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s.conf
