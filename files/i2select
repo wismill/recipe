@@ -19,6 +19,8 @@ do
             cp /root/.orig/unmute.orig /usr/bin/unmute
             cp /root/.orig/mpd.conf.i2s /etc/mpd.conf
             sed -i '0,/#device_tree_overlay=hifiberry-dac/s//device_tree_overlay=hifiberry-dac/' /boot/config.txt
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
             exit
             ;;
             "Hifiberry Plus")
@@ -27,6 +29,7 @@ do
             cp /root/.orig/mpd.conf.i2s /etc/mpd.conf
             sed -i '0,/#device_tree_overlay=hifiberry-dacplus/s//device_tree_overlay=hifiberry-dacplus/' /boot/config.txt
             echo -e "${red}Volume set to 0db and Playback Boost to 0%...${NC}"
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
             echo -e "${red}If you want to set volumes manually, please comment unmute section in /usr/bin/archphile-optimize...${NC}"
             echo
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
@@ -37,7 +40,8 @@ do
             cp /root/.orig/unmute.orig /usr/bin/unmute
             cp /root/.orig/mpd.conf.i2s /etc/mpd.conf
             sed -i '0,/#device_tree_overlay=hifiberry-digi/s//device_tree_overlay=hifiberry-digi/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
 	    exit
 	    ;;
 	    "Iqaudio")
@@ -45,7 +49,8 @@ do
             cp /root/.orig/unmute.orig /usr/bin/unmute
             cp /root/.orig/mpd.conf.i2s /etc/mpd.conf
             sed -i '0,/#device_tree_overlay=iqaudio-dac/s//device_tree_overlay=iqaudio-dac/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"      
 	    exit
 	    ;;
 	    "Iqaudio Plus")
@@ -53,7 +58,8 @@ do
             cp /root/.orig/unmute.orig /usr/bin/unmute
             cp /root/.orig/mpd.conf.i2s /etc/mpd.conf
             sed -i '0,/#device_tree_overlay=iqaudio-dacplus/s//device_tree_overlay=iqaudio-dacplus/' /boot/config.txt
-            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"   
+            echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
+            echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"    
             exit
             ;;
 	    "Mamboberry")
