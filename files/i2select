@@ -31,7 +31,6 @@ do
             echo -e "${red}Volume set to 0db and Playback Boost to 0%...${NC}"
             echo -e "${red}The volume mixer is disabled. If you want to change it, please edit /etc/mpd.conf...${NC}"
             echo -e "${red}If you want to set volumes manually, please comment unmute section in /usr/bin/archphile-optimize...${NC}"
-            echo
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"  
             exit
             ;;
