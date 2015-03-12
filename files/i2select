@@ -35,9 +35,9 @@ do
             "Hifiberry Digi")
             cp /root/.orig/config.txt.orig /boot/config.txt
             cp /root/.orig/unmute.orig /usr/bin/unmute
+            cp /root/.orig/mpd.conf.i2s /etc/mpd.conf
             sed -i '0,/#device_tree_overlay=hifiberry-digi/s//device_tree_overlay=hifiberry-digi/' /boot/config.txt
             echo -e "${red}Please reboot immediately using 'systemctl reboot' command...${NC}"
-            cp /root/.orig/mpd.conf.i2s /etc/mpd.conf
 	    exit
 	    ;;
 	    "Iqaudio")
