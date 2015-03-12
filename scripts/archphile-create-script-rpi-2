@@ -137,12 +137,9 @@ chmod +x /usr/bin/i2select
 mkdir /root/.orig
 cp /boot/config.txt /root/.orig/config.txt.orig
 cp /usr/bin/unmute /root/.orig/unmute.orig
-cat > /root/.orig/unmute.berryplus <<"EOF"
-#!/bin/bash
-# mixer settings for Hifiberry+ i2s Dac
-amixer sset "'Digital',0" 81%
-amixer sset "'Playback Boost',0" 0%
-EOF
+cp /etc/mpd.conf /root/.orig/mpd.conf.orig
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/mpd.conf.i2s -O /root/.orig/mpd.conf.i2s
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/unmute.berryplus -O /root.orig/unmute.berryplus
 chmod +x /root/.orig/unmute.berryplus
 #wget https://raw.githubusercontent.com/archphile/recipe/master/files/i2s.conf
 #mv i2s.conf /etc/modules-load.d/
