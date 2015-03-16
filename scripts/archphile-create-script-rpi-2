@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Raspberry Pi B/B+############################
+######################Archphile Creation Script for Raspberry Pi 2############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
