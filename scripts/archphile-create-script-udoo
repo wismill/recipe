@@ -83,7 +83,7 @@ EOF
 
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
-pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant wireless_tools iw dhcpcd mongoose hd-idle --noconfirm
+pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant wireless_tools iw dhcpcd mongoose hd-idle irqbalance --noconfirm
 
 # Removing unneeded packages and cleaning pacman cache
 echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}" 
@@ -107,6 +107,7 @@ systemctl enable mpd
 systemctl enable ympd
 systemctl enable archphile
 systemctl enable avahi-daemon
+systemctl enable irqbalance
 
 # Creating stuff for MPD
 echo -e "${red}Creating directories needed by MPD and downloading webradios...${NC}" 
