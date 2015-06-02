@@ -79,7 +79,7 @@ Server = http://archphile.org/repo/arm7
 EOF
 echo -e "${red}Updating system and installing needed packages...${NC}" 
 pacman -Syu --noconfirm
-pacman -S mpd-archphile mpc ympd-archphile archphile-optimize i2select upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant wireless_tools iw dhcpcd mongoose --noconfirm
+pacman -S mpd-archphile mpc ympd-archphile archphile-optimize i2select upmpdcli-archphile shairport-archphile alsa-utils cifs-utils nfs-utils udevil ntfs-3g htop avahi wpa_supplicant wireless_tools iw dhcpcd mongoose hd-idle --noconfirm
 
 # Removing unneeded packages and cleaning pacman cache
 echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}" 
@@ -179,6 +179,13 @@ mkdir -p /var/www/covers
 mkdir -p /var/www/Music
 ln -s /var/lib/mpd/music /var/www/covers
 ln -s /var/lib/mpd/music /var/www/Music
+
+# disks spin-down configuration
+echo -e "${red}Fetching udev rules for hdparm...${NC}" 
+mkdir /opt/archphile
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.rules-onedisk -O /opt/archphile/50-hdparm.rules-onedisk
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.rules-manydisks -O /opt/archphile/50-hdparm.rules-manydisks
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/hd-idle -O /etc/conf.d/hd-idle
 
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
