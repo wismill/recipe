@@ -172,9 +172,10 @@ sed -e '/ControlGroup/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
 sed -e '/ControlGroupAttribute/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
 systemctl reenable mpd
 
-# changing /etc/issue message
-echo -e "${red}Changing /etc/issue message ...${NC}" 
+# Applying various tweaks/mods
+echo -e "${red}Applying various tweaks/mods ...${NC}" 
 echo "Archphile \r (\l)" > /etc/issue
+sed -i 's/#Color/Color/' /etc/pacman.conf
 
 # settings for fetching local cover art using Mpdroid and Mpod
 echo -e "${red}Making symlinks for fetching local cover art${NC}" 
