@@ -90,7 +90,7 @@ pacman -S mpd-archphile mpc ympd-archphile archphile-optimize upmpdcli-archphile
 
 # Removing unneeded packages and cleaning pacman cache
 echo -e "${red}Removing unneeded packages and cleaning pacman cache...${NC}" 
-pacman -Rcsn lvm2 mdadm reiserfsprogs xfsprogs man-db ca-certificates which s-nail licenses jfsutils gettext file --noconfirm
+pacman -Rcsn lvm2 mdadm reiserfsprogs xfsprogs man-db ca-certificates which s-nail licenses jfsutils gettext file logrotate --noconfirm
 #systemctl disable cronie
 #systemctl mask cronie
 pacman -Scc
