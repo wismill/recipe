@@ -226,8 +226,8 @@ wget https://raw.githubusercontent.com/archphile/recipe/master/files/hd-idle -O 
 
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
-rm /root/archphile-create-script*
 rm /etc/ssh/ssh_host_*
+rm /root/archphile-create-script*
 
 echo -e "${red}PLEASE REBOOT YOUR SYSTEM IMMEDIATELY!!!!!!${NC}" 
 
