@@ -40,6 +40,10 @@ blacklist imxdrm
 blacklist imx-hdmi
 blacklist imx_ipuv3_crtc
 blacklist imx_ipu_v3
+blacklist drm_kms_helper
+blacklist imxdrm
+blacklist dw_hdmi
+blacklist dw_hdmi_imx
 EOF
 
 # Network Configuration
