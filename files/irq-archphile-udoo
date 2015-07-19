@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Set the irq affinity to the various cores. By default all
+# of the irqs are assigned to CPU0
+# NB: as we hardcode the IRQs numbers, this script only
+# works in teh Udoo quad
+
+# USB->CPU3: the most important one if you have a USB DAC, but
+# remember that also teh builtin wifi card in connected to
+# the USB bus
+echo "8" > /proc/irq/277/smp_affinity
+
+# ethernet->CPU2
+echo "4" > /proc/irq/278/smp_affinity
+echo "4" > /proc/irq/279/smp_affinity
+
+# microSD card->CPU1
+echo "2" > /proc/irq/280/smp_affinity
