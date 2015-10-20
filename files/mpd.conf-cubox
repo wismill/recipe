@@ -39,9 +39,11 @@ audio_output {
 enabled         "yes"
 type            "alsa"
 name            "MY DAC"
-device          "hw:2,0"
+device          "hw:0,0"
 auto_resample   "no"
 auto_channels   "no"
 auto_format     "no"
-dsd_usb         "yes"
+dop             "yes"
+#dsd_native	 "yes"
+#dsd_native_type "2"
 }
