@@ -233,6 +233,9 @@ wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.r
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.rules-manydisks -O /opt/archphile/50-hdparm.rules-manydisks
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/hd-idle -O /etc/conf.d/hd-idle
 
+# Allowing MPD in hosts.allow (tcp_wrappers)
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/hosts.allow -O /etc/hosts.allow
+
 # change the password in first login
 echo -e "${red}Setting a password change for next login...${NC}" 
 chage -d 0 root
