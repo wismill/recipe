@@ -3,6 +3,15 @@
 clear
 red='\e[0;31m'
 NC='\e[0m'
+
+#login as root, delete alarm user and modify ssh to accept root login
+echo -e "${red}Give default root password...${NC}" 
+su root
+echo -e "${red}Deleting alarm user...${NC}" 
+userdel -r alarm
+echo -e "${red}Setting PermitRootLogin to yes...${NC}" 
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+
 # Changing Root password
 echo -e "${red}Change the root password...${NC}" 
 passwd
