@@ -182,10 +182,10 @@ options rt2800usb nohwcrypt=1
 EOF
 
 # temporary fix for ControlGroup and ControlGroupAttribute mpd.service options
-echo -e "${red}Applying temporart fix for mpd.service ...${NC}" 
-sed -e '/ControlGroup/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
-sed -e '/ControlGroupAttribute/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
-systemctl reenable mpd
+#echo -e "${red}Applying temporart fix for mpd.service ...${NC}" 
+#sed -e '/ControlGroup/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
+#sed -e '/ControlGroupAttribute/ s/^#*/#/' -i  /usr/lib/systemd/system/mpd.service
+#systemctl reenable mpd
 
 # Applying various tweaks/mods
 echo -e "${red}Applying various tweaks/mods ...${NC}" 
