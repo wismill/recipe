@@ -234,8 +234,12 @@ wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.r
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/hd-idle -O /etc/conf.d/hd-idle
 
 # Allowing MPD in hosts.allow (tcp_wrappers)
-echo -e "${red}Putting MPD in hosts.allow...${NC}" 
-wget https://raw.githubusercontent.com/archphile/recipe/master/files/hosts.allow -O /etc/hosts.allow
+#echo -e "${red}Putting MPD in hosts.allow...${NC}" 
+#wget https://raw.githubusercontent.com/archphile/recipe/master/files/hosts.allow -O /etc/hosts.allow
+
+# Setting configuration for shairport-sync
+#echo -e "${red}Setting shairport-sync configuration..${NC}" 
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/shairport-sync.conf -O /etc/shairport-sync.conf
 
 # change the password in first login
 echo -e "${red}Setting a password change for next login...${NC}" 
