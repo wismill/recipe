@@ -1,2 +1,1 @@
-- resolve mpd crashing when scanning wav files
-- resolve systemd-journald not starting when storage=none
+- resolve systemd-journald not starting with storage=none
