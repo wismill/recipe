@@ -1,0 +1,2 @@
+- resolve high mpd 0.19.11 cpu use
+- resolve systemd-journald not starting when storage=none
