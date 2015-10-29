@@ -25,14 +25,15 @@ mixer_type      "disabled"
 group   "audio"
 max_connections "20"
 restore_paused "yes"
+#samplerate_converter "soxr very high"
 
 decoder {
-                plugin "ffmpeg"
-        	enabled "no"
+plugin          "ffmpeg"
+enabled         "no"
 }
 
 input {
-                plugin "curl"
+plugin          "curl"
 }
 
 audio_output {
@@ -43,6 +44,8 @@ mixer_control   "Digital"
 mixer_device    "hw:0"
 mixer_index     "0"
 device          "hw:0,0"
+#use the line below when enabling sox resampler
+#format "192000:24:2"
 auto_resample   "no"
 auto_channels   "no"
 }
