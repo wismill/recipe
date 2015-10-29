@@ -1,5 +1,5 @@
 #!/bin/bash
-######################Archphile Creation Script for Cubox-i############################
+######################Archphile Creation Script for Odroid C1+############################
 clear
 red='\e[0;31m'
 NC='\e[0m'
