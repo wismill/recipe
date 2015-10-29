@@ -5,7 +5,7 @@ This repository contains some very basic scripts that I use in order to create a
 In order to use these scripts you must first install ArchlinuxARM.
 
 - for Raspberry Pi:
-http://archlinuxarm.org/platforms/armv6/raspberry-pi
+http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2
 
 - for Udoo:
 http://archlinuxarm.org/platforms/armv7/freescale/udoo
@@ -20,7 +20,7 @@ pacman -Sy wget
 
 The last step is to download and run the script. The direct links of the scripts are:
 
-- https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-rpi
+- https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-rpi2
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-udoo
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-cuboxi
 
