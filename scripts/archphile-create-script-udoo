@@ -206,9 +206,10 @@ wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.r
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.rules-manydisks -O /opt/archphile/50-hdparm.rules-manydisks
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/hd-idle -O /etc/conf.d/hd-idle
 
-# Allowing MPD in hosts.allow (tcp_wrappers)
-#echo -e "${red}Putting MPD in hosts.allow...${NC}" 
-#wget https://raw.githubusercontent.com/archphile/recipe/master/files/hosts.allow -O /etc/hosts.allow
+# sharing usb disks with samba configuration
+echo -e "${red}Fetching samba configuration for sharing usb disks...${NC}" 
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/smb.conf -O /etc/samba/smb.conf
+echo -e "${red}In order to share your usb disk please enable and start smbd and nmbd service...${NC}"
 
 # Setting configuration for shairport-sync
 echo -e "${red}Setting shairport-sync configuration..${NC}" 
