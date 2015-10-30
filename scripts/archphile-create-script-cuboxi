@@ -233,7 +233,7 @@ wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.r
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/50-hdparm.rules-manydisks -O /opt/archphile/50-hdparm.rules-manydisks
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/hd-idle -O /etc/conf.d/hd-idle
 
-# disks spin-down configuration
+# sharing usb disks with samba configuration
 echo -e "${red}Fetching samba configuration for sharing usb disks...${NC}" 
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/smb.conf -O /etc/samba/smb.conf
 echo -e "${red}In order to share your usb disk please enable and start smbd and nmbd service...${NC}"
