@@ -4,14 +4,6 @@ clear
 red='\e[0;31m'
 NC='\e[0m'
 
-#login as root, delete alarm user and modify ssh to accept root login
-echo -e "${red}Give default root password...${NC}" 
-su root
-echo -e "${red}Deleting alarm user...${NC}" 
-userdel -r alarm
-echo -e "${red}Setting PermitRootLogin to yes...${NC}" 
-echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-
 # Changing Root password
 echo -e "${red}Change the root password...${NC}" 
 passwd
@@ -216,6 +208,10 @@ wget https://raw.githubusercontent.com/archphile/recipe/master/files/shairport-s
 # change the password in first login
 echo -e "${red}Setting a password change for next login...${NC}" 
 chage -d 0 root
+
+#fixing root permissions for sshd
+echo -e "${red}Setting PermitRootLogin to yes...${NC}" 
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
