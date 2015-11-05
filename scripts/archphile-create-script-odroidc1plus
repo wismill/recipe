@@ -204,6 +204,12 @@ change -d 0 root
 echo -e "${red}Setting PermitRootLogin to yes...${NC}" 
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
+# kernel downgrade to solve USB issues
+echo -e "${red}Downgrading kernel to 3.10.80-14...${NC}" 
+wget http://archphile.org/lab/odroid/linux-odroid-c1-3.10.80-14-armv7h.pkg.tar.xz
+pacman -U http://archphile.org/lab/odroid/linux-odroid-c1-3.10.80-14-armv7h.pkg.tar.xz --no-confirm
+rm linux-odroid-c1-3.10.80-14-armv7h.pkg.tar.xz
+
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
 rm /etc/ssh/ssh_host_*
