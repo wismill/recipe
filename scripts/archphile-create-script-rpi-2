@@ -4,7 +4,11 @@ clear
 red='\e[0;31m'
 NC='\e[0m'
 
-# Changing Root password
+# Deleting alarm user and changing Root password
+echo -e "${red}Deleting alarm user...${NC}" 
+su
+cd /root
+userdel -r alarm
 echo -e "${red}Change the root password...${NC}" 
 passwd
 
