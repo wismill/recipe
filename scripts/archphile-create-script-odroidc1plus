@@ -211,6 +211,11 @@ pacman -U http://archphile.org/lab/odroid/linux-odroid-c1-3.10.80-14-armv7h.pkg.
 rm linux-odroid-c1-3.10.80-14-armv7h.pkg.tar.xz
 pacman -Scc
 
+# IRQ affinity options
+echo -e "${red}Adding optional IRQ affinity options...${NC}" 
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/irq-archphile-odroid -O /usr/bin/irq-archphile
+chmod +x /usr/bin/irq-archphile
+
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
 rm /etc/ssh/ssh_host_*
