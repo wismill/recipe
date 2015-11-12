@@ -217,7 +217,7 @@ rm linux-odroid-c1-3.10.80-14-armv7h.pkg.tar.xz
 pacman -Scc
 
 # set USB DAC as default MPD soundcard
-sed -i 's/^device          "hw:0,0".*/device          "hw:1,0"/' /usr/bin/archphile-optimize
+sed -i 's/^device          "hw:0,0".*/device          "hw:1,0"/' /etc/mpd.conf
 
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
