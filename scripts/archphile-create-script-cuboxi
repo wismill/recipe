@@ -248,7 +248,7 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 # IRQ affinity options
 echo -e "${red}Adding optional IRQ affinity options...${NC}" 
-wget https://raw.githubusercontent.com/archphile/recipe/master/files/irq-archphile-udoo -O /usr/bin/irq-archphile
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/irq-archphile-cuboxi -O /usr/bin/irq-archphile
 chmod +x /usr/bin/irq-archphile
 
 # system cleanup
