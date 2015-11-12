@@ -204,6 +204,11 @@ change -d 0 root
 echo -e "${red}Setting PermitRootLogin to yes...${NC}" 
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
+# IRQ affinity options
+echo -e "${red}Adding optional IRQ affinity options...${NC}" 
+wget https://raw.githubusercontent.com/archphile/recipe/master/files/irq-archphile-odroid -O /usr/bin/irq-archphile
+chmod +x /usr/bin/irq-archphile
+
 # kernel downgrade to solve USB issues
 echo -e "${red}Downgrading kernel to 3.10.80-14...${NC}" 
 wget http://archphile.org/lab/odroid/linux-odroid-c1-3.10.80-14-armv7h.pkg.tar.xz
@@ -211,10 +216,8 @@ pacman -U http://archphile.org/lab/odroid/linux-odroid-c1-3.10.80-14-armv7h.pkg.
 rm linux-odroid-c1-3.10.80-14-armv7h.pkg.tar.xz
 pacman -Scc
 
-# IRQ affinity options
-echo -e "${red}Adding optional IRQ affinity options...${NC}" 
-wget https://raw.githubusercontent.com/archphile/recipe/master/files/irq-archphile-odroid -O /usr/bin/irq-archphile
-chmod +x /usr/bin/irq-archphile
+# set USB DAC as default MPD soundcard
+sed -i 's/^device          "hw:0,0".*/device          "hw:1,0"/' /usr/bin/archphile-optimize
 
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
