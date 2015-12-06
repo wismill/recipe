@@ -233,6 +233,9 @@ pacman -Scc
 # set USB DAC as default MPD soundcard
 sed -i 's/^device          "hw:0,0".*/device          "hw:1,0"/' /etc/mpd.conf
 
+# Disable hearbeat led on Odroid C1+
+#sed -i 's/^#echo default-on.*/echo default-on > /sys/class/leds/blue\:heartbeat/trigger/' /usr/bin/archphile-optimize
+
 # system cleanup
 echo -e "${red}Cleaning up system...${NC}" 
 rm /etc/ssh/ssh_host_*
