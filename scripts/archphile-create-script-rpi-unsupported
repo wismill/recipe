@@ -206,8 +206,9 @@ echo -e "${red}Setting shairport-sync configuration..${NC}"
 wget https://raw.githubusercontent.com/archphile/recipe/master/files/shairport-sync.conf -O /etc/shairport-sync.conf
 
 # change the password in first login
-echo -e "${red}Setting a password change for next login...${NC}" 
-chage -d 0 root
+#echo -e "${red}Setting a password change for next login...${NC}" 
+#chage -d 0 root
+
 #fixing root permissions for sshd
 echo -e "${red}Setting PermitRootLogin to yes...${NC}" 
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
