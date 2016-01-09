@@ -13,6 +13,8 @@ http://archlinuxarm.org/platforms/armv7/freescale/udoo
 - for Cubox-i:
 http://archlinuxarm.org/platforms/armv7/freescale/cubox-i
 
+- for BeagleBone Black:
+http://archlinuxarm.org/platforms/armv7/ti/beaglebone-black
 
 After that, login to your fresh ArchlinuxARM installation and install wget:
 
@@ -23,6 +25,7 @@ The last step is to download and run the script. The direct links of the scripts
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-rpi-2
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-udoo
 - https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-cuboxi
+- https://raw.githubusercontent.com/archphile/recipe/master/scripts/archphile-create-script-beaglebone-black
 
 
 For example, if you have a Raspberry Pi 2 you have to do the following:
