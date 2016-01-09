@@ -22,7 +22,7 @@ hostnamectl set-hostname archphile
 
 # /etc/motd text
 echo -e "${red}Downloading sample /etc/motd file...${NC}"
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/motd-beaglebone-black -O /etc/motd
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/motd-beaglebone-black -O /etc/motd
 nano /etc/motd
 
 # Changing DNS servers
@@ -49,7 +49,7 @@ EOF
 
 # Network Configuration
 echo -e "${red}Changing netctl network configuration...${NC}"
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/archphile-network -O /etc/netctl/archphile-network
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/archphile-network -O /etc/netctl/archphile-network
 systemctl disable systemd-networkd
 systemctl mask systemd-networkd
 netctl enable archphile-network
@@ -72,11 +72,11 @@ locale-gen
 echo "LANG="en_US.UTF-8"" > /etc/locale.conf
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/ntp.conf -O /etc/ntp.conf
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/ntp.conf -O /etc/ntp.conf
 
 # /etc/fstab tweaking and linking .bash_history to /dev/null
 echo -e "${red}Changing fstab entries...${NC}"
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/fstab-rpi -O /etc/fstab
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/fstab-rpi -O /etc/fstab
 echo -e "${red}Linking .bash_history to /dev/null...${NC}"
 rm /root/.bash_history
 ln -sf /dev/null ~/.bash_history
@@ -107,7 +107,7 @@ pacman -Scc
 # Bypassing new User=mpd systemd configuration
 echo -e "${red}Fetching user.conf in order to bypass User=mpd...${NC}"
 mkdir /etc/systemd/system/mpd.service.d
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/user.conf -O /etc/systemd/system/mpd.service.d/user.conf
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/user.conf -O /etc/systemd/system/mpd.service.d/user.conf
 
 # Setting multi-user.target as the new default target
 echo -e "${red}Setting default systemd target...${NC}"
@@ -155,7 +155,7 @@ EOF
 
 # udevil configuration
 echo -e "${red}Creating udevil configuration and enabling devmon service...${NC}"
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/udevil.conf -O /etc/udevil/udevil.conf
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/udevil.conf -O /etc/udevil/udevil.conf
 systemctl enable devmon@root
 
 ## limits.conf configuration
@@ -201,18 +201,18 @@ ln -s /var/lib/mpd/music /var/www/Music
 # disks spin-down configuration
 echo -e "${red}Fetching udev rules for hdparm...${NC}"
 mkdir /opt/archphile
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/50-hdparm.rules-onedisk -O /opt/archphile/50-hdparm.rules-onedisk
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/50-hdparm.rules-manydisks -O /opt/archphile/50-hdparm.rules-manydisks
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/hd-idle -O /etc/conf.d/hd-idle
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/50-hdparm.rules-onedisk -O /opt/archphile/50-hdparm.rules-onedisk
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/50-hdparm.rules-manydisks -O /opt/archphile/50-hdparm.rules-manydisks
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/hd-idle -O /etc/conf.d/hd-idle
 
 # sharing usb disks with samba configuration
 echo -e "${red}Fetching samba configuration for sharing usb disks...${NC}"
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/smb.conf -O /etc/samba/smb.conf
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/smb.conf -O /etc/samba/smb.conf
 echo -e "${red}In order to share your usb disk please enable and start smbd and nmbd service...${NC}"
 
 # Setting configuration for shairport-sync
 echo -e "${red}Setting shairport-sync configuration..${NC}"
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/shairport-sync.conf -O /etc/shairport-sync.conf
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/shairport-sync.conf -O /etc/shairport-sync.conf
 
 # change the password in first login
 #echo -e "${red}Setting a password change for next login...${NC}"
@@ -224,7 +224,7 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 
 # IRQ affinity options
 echo -e "${red}Adding optional IRQ affinity options...${NC}"
-wget https://raw.githubusercontent.com/wismill/recipe/master/files/irq-archphile-beaglebone-black -O /usr/bin/irq-archphile
+wget https://raw.githubusercontent.com/wismill/recipe/beaglebone-black/files/irq-archphile-beaglebone-black -O /usr/bin/irq-archphile
 chmod +x /usr/bin/irq-archphile
 
 # set USB DAC as default MPD soundcard
